@@ -18,6 +18,7 @@ ttime=0
 print("Searching...")
 # Will try for 1 min. If not connected, then exit.
 while True:
+    available_networks=os.popen('netsh wlan show networks').read()
     if ttime==60:
         print("\n"+preffered_ssid+" is not available right now!!")
         sys.exit()
@@ -31,3 +32,4 @@ print(disconnect)
 
 resp=os.popen('netsh wlan connect name='+'"'+preffered_ssid+'"').read()
 print(resp)
+time.sleep(5)
